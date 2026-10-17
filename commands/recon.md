@@ -250,6 +250,26 @@ HSTS=$(curl -sI "https://$TARGET/" | grep -i "strict-transport-security")
 echo "[+] DNS/TLS issues: $(wc -l < recon/$TARGET/dns-issues.txt 2>/dev/null || echo 0)"
 ```
 
+### Step 10: Tech Fingerprint + CVE Intel
+
+```bash
+# Aggressive per-host fingerprint — product + version for CVE triage
+cat recon/$TARGET/live-hosts.txt | awk '{print $1}' | while read host; do
+  whatweb -a "$host"
+done | tee recon/$TARGET/whatweb.txt
+
+# Authenticated fingerprint — only if a session cookie was obtained/provided
+# whatweb -a --cookie 'name=value; name2=value2' "$host" | tee -a recon/$TARGET/whatweb.txt
+
+echo "[+] Fingerprinted hosts: $(wc -l < recon/$TARGET/whatweb.txt)"
+```
+
+**→ Hand the `whatweb.txt` product+version pairs to the `hunt-cve-intel` skill.** It
+does passive CVE detection (NVD CPE + GHSA version-matching), active live verification
+(nuclei CVE templates), KEV/EPSS prioritization, and PoC/exploit hunting
+(searchsploit / Metasploit / PoC-in-GitHub), then writes `recon/$TARGET/cve-intel.md`.
+This handoff runs automatically at the end of `/recon`.
+
 ## Output
 
 After running, you will have in `recon/<target>/`:
@@ -285,6 +305,8 @@ js-secrets.txt              # Potential secrets in JS files
 trufflehog-js.txt           # trufflehog JS scan results
 secretfinder.txt            # SecretFinder scan results
 subzy.txt                   # Subdomain takeover candidates
+whatweb.txt                 # Per-host tech + version fingerprint
+cve-intel.md                # Detected CVEs (hunt-cve-intel) — prioritized + PoC
 ```
 
 ## What to Do Next
@@ -293,7 +315,8 @@ subzy.txt                   # Subdomain takeover candidates
 2. Check `nuclei.txt` — any high/critical findings?
 3. Review `api-endpoints.txt` — start IDOR testing
 4. Check for admin panels: grep live-hosts for `/admin`, `/jenkins`, `/grafana`
-5. Run `/hunt target.com` to start active vulnerability testing
+5. Review `cve-intel.md` — KEV-listed / live-confirmed CVEs are the first things to exploit
+6. Run `/hunt target.com` to start active vulnerability testing
 
 ## 5-Minute Rule
 
