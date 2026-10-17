@@ -5,6 +5,10 @@ sources: cve_database, oasis_saml_spec, academic_research, public_research
 report_count: 6
 ---
 
+# MANDATORY RUN CONTRACT - read before doing anything else
+
+If this skill was invoked (by name or by auto-match), you MUST read the ENTIRE SKILL.md and every file checked below before you touch a target. A 150-line skim is NOT enough to *run* this skill - it is only enough to decide whether it applies. Once you are running it, the whole context and all references are in-scope and non-optional.
+
 ## 20. SAML / SSO ATTACKS
 > SSO bugs frequently pay High–Critical. XML parsers are notoriously inconsistent.
 

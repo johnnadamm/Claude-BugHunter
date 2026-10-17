@@ -5,6 +5,10 @@ sources: hackerone_public, public_research
 report_count: 6
 ---
 
+# MANDATORY RUN CONTRACT - read before doing anything else
+
+If this skill was invoked (by name or by auto-match), you MUST read the ENTIRE SKILL.md and every file checked below before you touch a target. A 150-line skim is NOT enough to *run* this skill - it is only enough to decide whether it applies. Once you are running it, the whole context and all references are in-scope and non-optional.
+
 ## What is HTML Injection
 
 HTML Injection occurs when user input is inserted into a page's HTML without escaping, so injected tags are rendered by the browser as markup rather than displayed as literal text. Unlike XSS, the injected content does not require JavaScript execution — injecting `<b>`, `<h1>`, `<a>`, `<img>`, or `<form>` tags is sufficient.

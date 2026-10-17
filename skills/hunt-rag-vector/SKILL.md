@@ -5,6 +5,10 @@ sources: owasp_genai_2025_2026, public_research
 report_count: 0
 ---
 
+# MANDATORY RUN CONTRACT - read before doing anything else
+
+If this skill was invoked (by name or by auto-match), you MUST read the ENTIRE SKILL.md and every file checked below before you touch a target. A 150-line skim is NOT enough to *run* this skill - it is only enough to decide whether it applies. Once you are running it, the whole context and all references are in-scope and non-optional.
+
 ## LLM08 — Vector & Embedding Weaknesses (RAG Pipeline Attacks)
 
 `hunt-llm-ai` already owns *session-scoped* indirect injection — a hidden instruction in one

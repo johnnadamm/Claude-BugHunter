@@ -133,6 +133,10 @@ triggers:
   - bug bounty reference
 ---
 
+# MANDATORY RUN CONTRACT - read before doing anything else
+
+If this skill was invoked (by name or by auto-match), you MUST read the ENTIRE SKILL.md and every file checked below before you touch a target. A 150-line skim is NOT enough to *run* this skill - it is only enough to decide whether it applies. Once you are running it, the whole context and all references are in-scope and non-optional.
+
 # Offensive OSINT — External Red-Team Arsenal
 
 > **v3.0** — Refactored 2026-05-02 from a 4,168-line monolith into a lean SKILL.md (~400 lines) plus 15 modular reference files in `references/`. Detail content loads on demand — Claude reads only the reference files relevant to the current task.

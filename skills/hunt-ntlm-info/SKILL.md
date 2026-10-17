@@ -5,6 +5,10 @@ sources: github, authorized-engagement
 report_count: 1
 ---
 
+# MANDATORY RUN CONTRACT - read before doing anything else
+
+If this skill was invoked (by name or by auto-match), you MUST read the ENTIRE SKILL.md and every file checked below before you touch a target. A 150-line skim is NOT enough to *run* this skill - it is only enough to decide whether it applies. Once you are running it, the whole context and all references are in-scope and non-optional.
+
 ## Crown Jewel Targets
 
 NTLM info disclosure is a **Medium-severity finding when chained to context** — the leak itself is intentional protocol behavior (RFC-compliant NTLMSSP challenge), but on internet-exposed enterprise infrastructure it provides exact reconnaissance for the next stage of an attack. Highest-value targets:

@@ -5,6 +5,10 @@ sources: github, hackerone_public, bugcrowd_public, github_security_advisories
 report_count: 18
 ---
 
+# MANDATORY RUN CONTRACT - read before doing anything else
+
+If this skill was invoked (by name or by auto-match), you MUST read the ENTIRE SKILL.md and every file checked below before you touch a target. A 150-line skim is NOT enough to *run* this skill - it is only enough to decide whether it applies. Once you are running it, the whole context and all references are in-scope and non-optional.
+
 ## Shortcut: a raw HTTP client beats a real cross-origin page for header-check CSRF
 
 A raw HTTP client (curl, Burp Repeater, any scripting client) is not a browser: it will send
