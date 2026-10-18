@@ -66,6 +66,7 @@ CLASS_SKILL = {
     "cicd": ["hunt-cicd"], "k8s": ["hunt-k8s"], "cloud-misconfig": ["hunt-cloud-misconfig"],
     "ldap": ["hunt-ldap"], "ntlm-info": ["hunt-ntlm-info"], "tls-network": ["hunt-tls-network"],
     "subdomain-takeover": ["hunt-subdomain"],
+    "cve-intel": ["hunt-cve-intel"],
 }
 
 # detected tech -> tech-specific skill(s)
@@ -128,6 +129,7 @@ CLASS_PROBE = {
     "mfa": "curl -s \"{u}\"   # after the password step: reach the post-login URL directly, replay an OTP, or omit the MFA field",
     "race-condition": "curl -s -X POST \"{u}\"   # fire N copies in parallel (Turbo Intruder single-packet); >1 success means the limit is racy",
     "business-logic": "curl -s \"{u}\"   # replay the same action twice / skip a step / try qty 0 or negative; diff the resulting state",
+    "cve-intel": "curl -sI \"{u}\"   # fingerprint product+version from Server/X-Powered-By/meta/JS; then look up CVE+PoC for that exact version",
 }
 
 
